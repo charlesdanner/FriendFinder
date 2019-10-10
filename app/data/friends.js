@@ -1,4 +1,4 @@
-const friendsList = [
+const friendsList = [                   //array of objects that represents the different friends that are stored
     {
         name: 'Nicholas Cage',
         image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzfBYeilVUgWB8qfBaxcGSt1w9LLheqmqiILY4GqYX9k5wswNiVQ',
@@ -33,4 +33,4 @@ const friendsList = [
 ]
 
 
-module.exports = friendsList
+module.exports = friendsList  //export the friends object for use in different files

@@ -8,7 +8,8 @@
     <title>Find Friend</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-</head>
+    <link rel='stylesheet' href='style.css'>
+    </head>
 
 <body>
 
@@ -18,7 +19,7 @@
                 <h1>Survey Questions</h1>
             </div>
         </header>
-        <form action="POST" role="form">
+        <form action="#" method='POST' role="form">
             <h2>About You</h2>
 
             <div class="form-group">
@@ -121,15 +122,17 @@
                 <input class='radio' type="radio" name="question10" value="5"> 5 (Strongly Agree)
             </div>
             <button type="button" id='submit' class="btn btn-block btn-primary">Submit</button>
+            <h4 class="error text-center">Error: Not all fields valid</h4>
         </form>
         <div class="links">
-                <a href="url">API Friends List</a>
+                <a href="url">API Friends List</a> |  
                 <a href="url">GitHub Repository</a>
         </div>
 
     </div>
 
-    <script src='../../javascript/logic.js'></script>
+    <script src='./logic.js'></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
 </body>
 

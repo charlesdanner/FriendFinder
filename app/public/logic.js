@@ -16,8 +16,7 @@ document.addEventListener("DOMContentLoaded", event => {
 
         if (clientName.length < 3 || !is_url(clientImage)) {
             error.style.display = 'block';
-            error.style.color = 'red';
-            return;
+            error.style.display = 'red';
         } else {
             let getCheckedValue = radioName => {
                 let radios = document.getElementsByName(radioName);
@@ -34,7 +33,6 @@ document.addEventListener("DOMContentLoaded", event => {
             if (formAnswers.length < 10 || formAnswers.includes(undefined)) {
                 error.style.display = 'block';
                 error.style.color = 'red';
-                return;
             } else {
                 let newFriend = {
                     name: clientName,
@@ -47,6 +45,12 @@ document.addEventListener("DOMContentLoaded", event => {
                 request.send(newFriend);
             }
         }
+
+
+
+
+
+
 
     }
 })

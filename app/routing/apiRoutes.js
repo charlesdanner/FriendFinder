@@ -1,4 +1,3 @@
-const path = require('path');
 const friendsList = require('../data/friends.js');
 
 module.exports = app => {
@@ -21,5 +20,6 @@ module.exports = app => {
             } 
         }
         bestMatch = friendsList[matchValues.indexOf(bestMatchValue)]
+        friendsList.push(req.body.newFriend);
         res.json(bestMatch);
 })}

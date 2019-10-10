@@ -8,10 +8,29 @@
     <title>Find Friend</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  
     <link rel='stylesheet' href='style.css'>
-    </head>
+</head>
 
 <body>
+    <div id="myModal" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 id="friendName"class="modal-title">Loading Data...</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <img id='friendImage'>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="container">
         <header>
@@ -105,7 +124,8 @@
             </div>
             <div class="question">
                 <h3>Question 9</h3>
-                <p>You think that everyone’s views should be respected regardless of whether they are supported by facts or not.</p>
+                <p>You think that everyone’s views should be respected regardless of whether they are supported by facts
+                    or not.</p>
                 <input class='radio' type="radio" name="question9" value="1"> 1(Strongly Disagree)<br>
                 <input class='radio' type="radio" name="question9" value="2"> 2<br>
                 <input class='radio' type="radio" name="question9" value="3"> 3<br>
@@ -121,17 +141,18 @@
                 <input class='radio' type="radio" name="question10" value="4"> 4<br>
                 <input class='radio' type="radio" name="question10" value="5"> 5 (Strongly Agree)
             </div>
-            <button type="button" id='submit' class="btn btn-block btn-primary">Submit</button>
+            <button type="button" data-toggle="modal" data-target="#myModal" id='submit'
+                class="btn btn-block btn-primary">Submit</button>
             <h4 class="error text-center">Error: Not all fields valid</h4>
         </form>
         <div class="links">
-                <a href="url">API Friends List</a> |  
-                <a href="url">GitHub Repository</a>
+            <a href="url">API Friends List</a> |
+            <a href="url">GitHub Repository</a>
         </div>
 
     </div>
 
-    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap.native@2.0.15/dist/bootstrap-native-v4.min.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src='./logic.js'></script>
 

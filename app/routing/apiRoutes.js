@@ -1,6 +1,10 @@
 const friendsList = require('../data/friends.js');
 
 module.exports = app => {
+    app.get('/api-friends-list', (req, res) => {
+        res.json(friendsList)
+    })
+
     app.post('/survey', function (req, res) {
         
         const matchValues = [];

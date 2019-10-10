@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", event => {
 
         if (clientName.length < 3 || !is_url(clientImage)) {
             error.style.display = 'block';
-            error.style.display = 'red';
+            error.style.color = 'red';
         } else {
             let getCheckedValue = radioName => {
                 let radios = document.getElementsByName(radioName);

@@ -46,10 +46,6 @@ document.addEventListener("DOMContentLoaded", event => {
                         newFriend
                     })
                         .then(response => {
-                    //         <img id='friendImage'>
-                    // <ul>
-                    //     <li id='friendName'></li>
-                    //     <li id="friendEmail"></li>
                             console.log(response.data)
                             let friendImage = document.getElementById('friendImage');
                             let friendName = document.getElementById('friendName');

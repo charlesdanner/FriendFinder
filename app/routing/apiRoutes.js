@@ -1,4 +1,5 @@
 const path = require('path');
+const friendsList = require('../data/friends.js');
 
 module.exports = app => {
     app.post('/survey', function (req, res) {
@@ -6,8 +7,8 @@ module.exports = app => {
         const matchValues = [];
         for(var i = 0; i < friendsList.length; i++){
             let sum = 0;
-            for(var j = 0; j < friendsList[i].scores.length; j++){
-                 sum += (Math.abs(req.body.scores[j] - friendsList[i].scores[j]))
+            for(var j = 0; j < 10; j++){
+                 sum += (Math.abs(req.body.newFriend.scores[j] - friendsList[i].scores[j]))
             }
             matchValues.push(sum)
         }

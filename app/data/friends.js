@@ -32,4 +32,5 @@ const friendsList = [
 
 ]
 
+
 module.exports = friendsList

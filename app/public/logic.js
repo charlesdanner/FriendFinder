@@ -39,18 +39,21 @@ document.addEventListener("DOMContentLoaded", event => {
                     image: clientImage,
                     scores: formAnswers
                 }
-                var request = new XMLHttpRequest();
-                request.open('POST', '/survey', true);
-                request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
-                request.send(newFriend);
+                console.log(newFriend)
+                function performPostRequest(e) {
+                    console.log('this is working')
+                    axios.post('/survey', {
+                        newFriend
+                    })
+                        .then(response => {
+                            console.log(response.data)
+                        }).catch(error => {
+                            console.log(`this didn't work`)
+                        })
+
+                }
+                performPostRequest()
             }
         }
-
-
-
-
-
-
-
     }
 })

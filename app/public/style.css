@@ -21,14 +21,16 @@ body{
     margin-bottom: 0px;
 }
 
-.btn-primary{
-    background-color: #66CDAA
+.btn{
+    background-color: #66CDAA;
+    color: white;
 }
 
 .jumbotron{
     background-color: lavender;
     color: blueviolet
 }
+
 
 .modal{
     background-color:lavender;

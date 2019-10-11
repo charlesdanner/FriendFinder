@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", event => {  //javascript only starts running after the DOM is loaded
 
-
     document.getElementById('submit').onclick = e => {      //event listener listening for client to click the submit button on the survey form
         e.preventDefault();
         const formAnswers = [];         //empty array that stores the client's multiple choice answers
@@ -39,16 +38,31 @@ document.addEventListener("DOMContentLoaded", event => {  //javascript only star
                     image: clientImage,
                     scores: formAnswers
                 }
-                console.log(newFriend)
-               
 
                 axios.post('/survey', { //an ajax call is made             
                     newFriend                           //sends the newFriend object to the server and waits for a response
                 })
                     .then(response => {             //after the server responds and figures out which friend in the DB is the best match
                         console.log(response.data)
+                        const resetCheckedValue = radioName => {
+                            let radios = document.getElementsByName(radioName);         //loops through the radios and returns the value of the selected radio
+                            for (var j = 0; j < radios.length; j++) {
+                                radios[j].checked = false
+
+                            }
+                        }
+                        let clientNameInput = document.getElementById('clientName')
+                        let clientImageInput = document.getElementById('clientImage')
                         let friendImage = document.getElementById('friendImage');   //set html modal elements to variables
                         let friendName = document.getElementById('friendName');
+
+                        clientNameInput.value = null;
+                        clientImageInput.value = null;      //resets the values of the input boxes and the sets the error message back to default display setting
+                        error.style.display = 'none'
+
+                        for (var i = 1; i < 11; i++) {
+                            resetCheckedValue('question' + i)           //calls the function looping the radios and gives the argument of an incrementing question number
+                        }
                         friendImage.src = response.data.image                   //set the match to the friendImage <img> element in the modal
                         friendName.innerHTML = response.data.name               //set the title of the modal to the name of the friend
 
@@ -56,8 +70,6 @@ document.addEventListener("DOMContentLoaded", event => {  //javascript only star
                         if (error) console.log(error)        //if an error occurs, console log it.
 
                     })
-
-
             }
         }
     }

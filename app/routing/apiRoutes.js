@@ -8,6 +8,7 @@ module.exports = app => {                                //exporting the express
     app.post('/survey', function (req, res) {               //function that runs when a post is made
         
         const filteredArr = []
+        const matchValues = [];
         const filterFriends = (friend) =>{
             if(friend.name !== req.body.newFriend.name){        //filters the friendsList so that you can't be matched with a user with the same name as you. 
                 filteredArr.push(friend)                        //That's either you or it would be creepy to be friends with them
@@ -15,7 +16,6 @@ module.exports = app => {                                //exporting the express
         }
         friendsList.filter(filterFriends)
 
-        const matchValues = [];
         for(var i = 0; i < filteredArr.length; i++){            //for loops that loop through the different people in the array and then loop through the scores they submitted
             let sum = 0;
             for(var j = 0; j < 10; j++){

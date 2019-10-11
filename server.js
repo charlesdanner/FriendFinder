@@ -6,7 +6,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static('./app/public'));
 
-
+                                        //APIROUTES MUST BE REQUIRED BEFORE HTML
 require('./app/routing/apiRoutes')(app);    //requiring the apiRoutes functions to send and receive data
 require('./app/routing/htmlRoutes')(app)    //requiring the htmlRoutes functions to send html docs depending on which url the client is on
 

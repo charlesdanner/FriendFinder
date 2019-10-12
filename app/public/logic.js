@@ -70,11 +70,11 @@ document.addEventListener("DOMContentLoaded", event => {  //javascript only star
                         friendImage.src = response.data.image                   //set the match to the friendImage <img> element in the modal
                         friendName.innerHTML = response.data.name               //set the title of the modal to the name of the friend
 
-                        span.onclick = function () {
+                        span.onclick = () => {
                             modal.style.display = "none";        //when the client presses the "x" button, the modal closes
                         }
 
-                        window.onclick = function (event) {     //if the client clicks outside of the modal, the modal closes
+                        window.onclick = event => {     //if the client clicks outside of the modal, the modal closes
                             if (event.target == modal) {
                                 modal.style.display = "none";
                             }

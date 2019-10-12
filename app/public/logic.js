@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", event => {  //javascript only star
             else return false;
         }
 
-        if (clientName.length < 3 || !is_url(clientImage)) {    //client's name must be longer than 2 characters in length and image must be a valid url link
+        if (clientName.length < 3 && isNaN(clientName) || !is_url(clientImage)) {    //client's name must be longer than 2 characters in length and image must be a valid url link
             error.style.display = 'block';
             error.style.color = 'red';
         } else {
@@ -44,13 +44,16 @@ document.addEventListener("DOMContentLoaded", event => {  //javascript only star
                 })
                     .then(response => {             //after the server responds and figures out which friend in the DB is the best match
                         console.log(response.data)
-                        let clientNameInput = document.getElementById('clientName')
-                        let clientImageInput = document.getElementById('clientImage')
-                        let friendImage = document.getElementById('friendImage');   //set html modal elements to variables
-                        let friendName = document.getElementById('friendName');
+                        const modal = document.getElementById('myModal');
+
+                        const clientNameInput = document.getElementById('clientName')
+                        const clientImageInput = document.getElementById('clientImage')
+                        const friendImage = document.getElementById('friendImage');   //set html modal elements to variables
+                        const friendName = document.getElementById('friendName');
+                        const span = document.getElementById('span')
 
                         const resetCheckedValue = radioName => {
-                            let radios = document.getElementsByName(radioName);         //loops through the radios and makes them all unchecked
+                            const radios = document.getElementsByName(radioName);         //loops through the radios and makes them all unchecked
                             for (var i = 0; i < radios.length; i++) {
                                 radios[i].checked = false
                             }
@@ -58,16 +61,27 @@ document.addEventListener("DOMContentLoaded", event => {  //javascript only star
                         clientNameInput.value = null;
                         clientImageInput.value = null;      //resets the values of the input boxes and the sets the error message back to default display setting
                         error.style.display = 'none'
+                        modal.style.display = "block";      //when the data comes back, the modal opens
 
                         for (var i = 1; i < 11; i++) {
                             resetCheckedValue('question' + i)           //calls the function looping the radios and gives the argument of an incrementing question number
                         }
+
                         friendImage.src = response.data.image                   //set the match to the friendImage <img> element in the modal
                         friendName.innerHTML = response.data.name               //set the title of the modal to the name of the friend
 
+                        span.onclick = function () {
+                            modal.style.display = "none";        //when the client presses the "x" button, the modal closes
+                        }
+
+                        window.onclick = function (event) {     //if the client clicks outside of the modal, the modal closes
+                            if (event.target == modal) {
+                                modal.style.display = "none";
+                            }
+                        }
+
                     }).catch(error => {
                         if (error) console.log(error)        //if an error occurs, console log it.
-
                     })
             }
         }

@@ -35,11 +35,8 @@
         <h1><strong>Find a Friend!</strong></h1>
         <h3>Where the the socially awkward can connect!</h3>
         <hr>
-
     </div>
-
     <div class="container border border-dark rounded">
-
         <div class="row">
             <div class="col-xs green">
                 <form action="#" method='POST' role="form">
@@ -55,7 +52,6 @@
                                 <input type="text" class="form-control" id="clientImage">
                             </div>
                         </div>
-
                     </div>
                     <div class="shadow question border border-dark rounded">
                         <h4 class='text-center'>Your mind is always buzzing with unexplored ideas and plans.</h4>
@@ -66,7 +62,6 @@
                         <input class='radio' type="radio" name="question1" value="4"> 4<br>
                         <input class='radio' type="radio" name="question1" value="5"> 5 (Strongly Agree)
                     </div>
-
                     <div class="shadow question border border-dark rounded">
                         <h4 class='text-center'>Generally speaking, you rely more on your experience than your
                             imagination.</h4>
@@ -98,7 +93,6 @@
                         <input class='radio' type="radio" name="question4" value="4"> 4<br>
                         <input class='radio' type="radio" name="question4" value="5"> 5 (Strongly Agree)
                     </div>
-
                     <div class="shadow question border border-dark rounded">
                         <h4 class='text-center'>People can rarely upset you.</h4>
                         <hr>
@@ -108,7 +102,6 @@
                         <input class='radio' type="radio" name="question5" value="4"> 4<br>
                         <input class='radio' type="radio" name="question5" value="5"> 5 (Strongly Agree)
                     </div>
-
                     <div class="shadow question border border-dark rounded">
                         <h4 class='text-center'>It is often difficult for you to relate to other people’s feelings.</h4>
                         <hr>
@@ -118,7 +111,6 @@
                         <input class='radio' type="radio" name="question6" value="4"> 4<br>
                         <input class='radio' type="radio" name="question6" value="5"> 5 (Strongly Agree)
                     </div>
-
                     <div class="shadow question border border-dark rounded">
                         <h4 class='text-center'>In a discussion, truth should be more important than people’s
                             sensitivities.</h4>
@@ -129,7 +121,6 @@
                         <input class='radio' type="radio" name="question7" value="4"> 4<br>
                         <input class='radio' type="radio" name="question7" value="5"> 5 (Strongly Agree)
                     </div>
-
                     <div class="shadow question border border-dark rounded">
                         <h4 class='text-center'>You rarely get carried away by fantasies and ideas.</h4>
                         <hr>
@@ -139,7 +130,6 @@
                         <input class='radio' type="radio" name="question8" value="4"> 4<br>
                         <input class='radio' type="radio" name="question8" value="5"> 5 (Strongly Agree)
                     </div>
-
                     <div class="shadow question border border-dark rounded">
                         <h4 class='text-center'>You think that everyone’s views should be respected regardless of
                             whether they are supported facts or not.</h4>
@@ -150,7 +140,6 @@
                         <input class='radio' type="radio" name="question9" value="4"> 4<br>
                         <input class='radio' type="radio" name="question9" value="5"> 5 (Strongly Agree)
                     </div>
-
                     <div class="shadow question border border-dark rounded">
                         <h4 class='text-center'>You feel more energetic after spending time with a group of people.</h4>
                         <hr>
@@ -162,18 +151,15 @@
                     </div>
                     <button type="button" data-toggle="modal" data-target="#myModal" id='submit'
                         class="btn btn-block">Submit</button>
-                    <h4 class="error text-center">Error: Not all fields valid</h4>
+                    <h4 id="error" class="error text-center">Error: Not all fields valid</h4>
                 </form>
                 <div class="links text-center">
-                        <a href="/api-friends-list">API Friends List</a> |
-                        <a href="https://github.com/charlesdanner/FriendFinder">GitHub Repository</a>
-                    </div>
+                    <a href="/api-friends-list">API Friends List</a> |
+                    <a href="https://github.com/charlesdanner/FriendFinder">GitHub Repository</a>
+                </div>
             </div>
         </div>
-
     </div>
-
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap.native@2.0.15/dist/bootstrap-native-v4.min.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src='./logic.js'></script>

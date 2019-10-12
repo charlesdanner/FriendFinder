@@ -13,7 +13,6 @@ body{
     margin: auto;
     margin-bottom: 50px;
     background-color: lavender
-    
 }
 
 .links{
@@ -31,7 +30,6 @@ body{
     color: blueviolet
 }
 
-
 .modal{
     background-color:lavender;
 }
@@ -44,6 +42,7 @@ body{
 .green{
     margin: auto;
 }
+
 h1, h2, h3{
     font-family: Georgia, 'Times New Roman', Times, serif;
 }

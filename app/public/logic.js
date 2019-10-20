@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", event => {  //javascript only star
             else false;
         }
 
-        if (clientName.length < 3 && isNaN(clientName) || !is_url(clientImage)) {    //client's name must be longer than 2 characters in length and image must be a valid url link
+        if (clientName.length < 3 || !isNaN(clientName) || !is_url(clientImage)) {    //client's name must be longer than 2 characters in length and image must be a valid url link
             error.style.display = 'block';
             error.style.color = 'red';
         } else {

@@ -5,19 +5,19 @@ module.exports = app => {                                //exporting the express
         res.json(friendsList)                           //sends the friends list array as a json object to the browser when they press the link in the html
     })
 
-    app.post('/survey', (req, res) => {                         
+    app.post('/api-survey', (req, res) => {                         
         const matchValues = []          //variable to hold the math comparing the client and DB results to one another
-        const clientScores = req.body.newFriend.scores
+        const client = req.body.newFriend
         
         const friendsToBeCompared = friendsList.filter((friend) =>          //friends filtered so user can't get themselves 
-            friend.name !== req.body.newFriend.name)
+            friend.name !== client.name)
 
         const friendScoreArray = friendsToBeCompared.map(friends =>         //of the friends that aren't the user, make an array of their survey results
             friends.scores)
 
         friendScoreArray.forEach(arr => 
             matchValues.push(arr.map((value, idx) =>    //compare the client and DB scores to one another and find the difference between the two
-                Math.abs(value - clientScores[idx])     //push an array for each friend containing the score differences between them and the client into the matchValues array
+                Math.abs(value - client.scores[idx])     //push an array for each friend containing the score differences between them and the client into the matchValues array
             ))
         )
 

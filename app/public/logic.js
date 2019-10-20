@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", event => {  //javascript only star
                     scores: formAnswers
                 }
 
-                axios.post('/survey', { //an axios post call is made             
+                axios.post('/api-survey', { //an axios post call is made             
                     newFriend                           //sends the newFriend object to the server and waits for a response
                 })
                     .then(response => {             //after the server responds and figures out which friend in the DB is the best match

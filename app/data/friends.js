@@ -32,5 +32,14 @@ const friendsList = [                   //array of objects that represents the d
 
 ]
 
+const InquirerQuestion = function (name, image, scores) {
+    this.name = name,
+    this.image = image,
+    this.scores = scores
+}
+
+
+
+
 
 module.exports = friendsList  //export the friends object for use in different files

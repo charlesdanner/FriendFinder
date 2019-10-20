@@ -10,18 +10,18 @@ document.addEventListener("DOMContentLoaded", event => {  //javascript only star
         const is_url = clientImage => {         //regexp function that figures out if the client's input is a valid URL or not
             regexp = /^(?:(?:https?|ftp):\/\/)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:\/\S*)?$/;
             if (regexp.test(clientImage)) return true;
-            else return false;
+            else false;
         }
 
         if (clientName.length < 3 && isNaN(clientName) || !is_url(clientImage)) {    //client's name must be longer than 2 characters in length and image must be a valid url link
             error.style.display = 'block';
             error.style.color = 'red';
         } else {
-            let getCheckedValue = radioName => {
-                let radios = document.getElementsByName(radioName);         //loops through the radios and returns the value of the selected radio
+            const getCheckedValue = radioName => {
+                const radios = document.getElementsByName(radioName);         //loops through the radios and returns the value of the selected radio
                 for (var j = 0; j < radios.length; j++) {
                     if (radios[j].checked) {
-                        return radios[j].value;
+                        return parseInt(radios[j].value);
                     }
                 }
             }
@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", event => {  //javascript only star
                 error.style.display = 'block';
                 error.style.color = 'red';
             } else {
-                let newFriend = {       //if no errors occur, new friend object is created with user's inputs
+                const newFriend = {       //if no errors occur, new friend object is created with user's inputs
                     name: clientName,
                     image: clientImage,
                     scores: formAnswers
@@ -75,9 +75,7 @@ document.addEventListener("DOMContentLoaded", event => {  //javascript only star
                         }
 
                         window.onclick = event => {     //if the client clicks outside of the modal, the modal closes
-                            if (event.target == modal) {
-                                modal.style.display = "none";
-                            }
+                            if (event.target == modal) modal.style.display = "none";                     
                         }
 
                     }).catch(error => {

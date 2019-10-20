@@ -5,34 +5,31 @@ module.exports = app => {                                //exporting the express
         res.json(friendsList)                           //sends the friends list array as a json object to the browser when they press the link in the html
     })
 
-    app.post('/survey', (req, res) => {               //function that runs when a post is made
+    app.post('/survey', (req, res) => {                         
+        const matchValues = []          //variable to hold the math comparing the client and DB results to one another
+        const clientScores = req.body.newFriend.scores
+        
+        const friendsToBeCompared = friendsList.filter((friend) =>          //friends filtered so user can't get themselves 
+            friend.name !== req.body.newFriend.name)
 
-        const filteredArr = []
-        const matchValues = [];
-        const filterFriends = friend => {
-            if (friend.name !== req.body.newFriend.name) {        //filters the friendsList so that you can't be matched with a user with the same name as you. 
-                filteredArr.push(friend)                        //That's either you or it would be creepy to be friends with them
-            }
-        }
-        friendsList.filter(filterFriends)
+        const friendScoreArray = friendsToBeCompared.map(friends =>         //of the friends that aren't the user, make an array of their survey results
+            friends.scores)
 
-        for (var i = 0; i < filteredArr.length; i++) {            //for loops that loop through the different people in the array and then loop through the scores they submitted
-            let sum = 0;
-            for (var j = 0; j < 10; j++) {
-                sum += (Math.abs(req.body.newFriend.scores[j] - filteredArr[i].scores[j]))     //gets the absolute value of the difference between the client's score and the potential match's scores at each index and sums them into one total
-            }
-            matchValues.push(sum)
-        }
-        let bestMatchValue = matchValues[0];        //gives best match an initial value
+        friendScoreArray.forEach(arr => 
+            matchValues.push(arr.map((value, idx) =>    //compare the client and DB scores to one another and find the difference between the two
+                Math.abs(value - clientScores[idx])     //push an array for each friend containing the score differences between them and the client into the matchValues array
+            ))
+        )
 
-        for (var i = 1; i < matchValues.length; i++) {
-            if (matchValues[i] < bestMatchValue) {
-                bestMatchValue = matchValues[i];        //if a match has a lower rating (better match) than the current, then replace the bestMatchValue with the new value
-                bestMatch = friendsList[i]
-            }
-        }
-        bestMatch = friendsList[matchValues.indexOf(bestMatchValue)]        //find the friend who produced the best value
-        friendsList.push(req.body.newFriend);                   //push the req into the friends list
-        res.json(bestMatch);                                    //send the best match back to the client as a response
+        const matchValueSums = matchValues.map(arr =>       //take the arrays of results and sum them together to find which is the lowest value
+            arr.reduce((val, total) => total += val, 0))
+
+        const matchValueSumsCopy = matchValueSums.map(value => value)       //make a copy of the summed values for reference
+
+        matchValueSums.sort((a, b) => a < b ? -1 : 1)       //sort the values from lowest to highest
+        
+        const bestMatch = friendsToBeCompared[matchValueSumsCopy.indexOf(matchValueSums[0])]        //compare the lowest score to its original index placement and refer back to the original array containing the DB results for the correct match
+        res.json(bestMatch);              //send the best match back to the client as a response
+        
     })
 }
